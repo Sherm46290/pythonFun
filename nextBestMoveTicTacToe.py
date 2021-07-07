@@ -50,17 +50,32 @@ def newGameO():
                 print('O goes first')
                 newGameOfirst()
 
+theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ', 'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ', 'low-L': ' ', 'low-M': ' ', 'low-R': ' '}
+
 def newGameXfirst():
-    print('you win!')
+    print('Put an X in the bottom left corner')
+    theBoard['low-L'] = 'X'
 
 def newGameXsecond():
     print('you lose!')
 
 def newGameOfirst():
-    print('you win!')
+    print('Put an O in the bottom left corner')
+    theBoard['low-L'] = 'O'
 
 def newGameOsecond():
     print('you lose!')
 
 
 nextBestMove()
+
+
+
+def printBoard(board):
+    print(board['top-L'] + '|' + board['top-M'] + '|' + board['top-R'])
+    print('-----')
+    print(board['mid-L'] + '|' + board['mid-M'] + '|' + board['mid-R'])
+    print('-----')
+    print(board['low-L'] + '|' + board['low-M'] + '|' + board['low-R'])
+
+printBoard(theBoard)
