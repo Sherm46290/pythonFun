@@ -85,7 +85,7 @@ def newGameXfirst():
     printBoard(theBoard)
     print('Where did they go? Please pick the spot from 1 to 9.')
     whereTheyWent = str(input())
-    if whereTheyWent == ['2', '4', '5', '6', '8']:
+    if ['2', '4', '5', '6', '8'] in whereTheyWent:
         theBoard['mid-M'] = 'O'
         theOptionsBoard['mid-M'] = 'O'
         print('Put an X in spot 3')
