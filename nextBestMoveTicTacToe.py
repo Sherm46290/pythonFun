@@ -1,17 +1,18 @@
 import random
+import ticTacModules
 
 def nextBestMove():
     print("Are you X's or O's")
-    xoro = str(input())
-    if xoro == str('X'):
+    xoro = str.lower(input())
+    if xoro == str('x'):
         print('Has anyone gone yet?')
-        startNewGame = input()
+        startNewGame = str.lower(input())
         if startNewGame == str('no'):
             newGameX()
     
     else:
         print('Has anyone gone yet?')
-        startNewGame = input()
+        startNewGame = str.lower(input())
         if startNewGame == str('no'):
             newGameO()
 
@@ -20,10 +21,10 @@ def nextBestMove():
 
 def newGameX():
         print("Who's going first? X or O or do you want me to decide?")
-        goingFirst = str(input())
-        if goingFirst == str('X'):
+        goingFirst = str.lower(input())
+        if goingFirst == str('x'):
             newGameXfirst()
-        elif goingFirst == str('O'):
+        elif goingFirst == str('o'):
             newGameXsecond()
         else:
             whosFirts = random.randint(1,2)
@@ -36,10 +37,10 @@ def newGameX():
 
 def newGameO():
         print("Who's going first? X or O or do you want me to decide?")
-        goingFirst = str(input())
-        if goingFirst == str('O'):
+        goingFirst = str.lower(input())
+        if goingFirst == str('o'):
             newGameOfirst()
-        elif goingFirst == str('X'):
+        elif goingFirst == str('x'):
             newGameOsecond()
         else:
             whosFirts = random.randint(1,2)
@@ -53,19 +54,6 @@ def newGameO():
 theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ', 'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ', 'low-L': ' ', 'low-M': ' ', 'low-R': ' '}
 theOptionsBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ', 'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ', 'low-L': ' ', 'low-M': ' ', 'low-R': ' '}
 
-def printBoard(board):
-    print(board['top-L'] + '|' + board['top-M'] + '|' + board['top-R'])
-    print('-----')
-    print(board['mid-L'] + '|' + board['mid-M'] + '|' + board['mid-R'])
-    print('-----')
-    print(board['low-L'] + '|' + board['low-M'] + '|' + board['low-R'])
-
-def printOptionsBoard(board):
-    print(board['top-L'] + '|' + board['top-M'] + '|' + board['top-R'])
-    print('-----')
-    print(board['mid-L'] + '|' + board['mid-M'] + '|' + board['mid-R'])
-    print('-----')
-    print(board['low-L'] + '|' + board['low-M'] + '|' + board['low-R'])
 
 theOptionsBoard['top-L'] = '1'
 theOptionsBoard['top-M'] = '2'
@@ -82,7 +70,7 @@ def newGameXfirst():
     print('Put an X in the bottom left corner')
     theBoard['low-L'] = 'X'
     theOptionsBoard['low-L'] = 'X'
-    printBoard(theBoard)
+    ticTacModules.printBoard(theBoard)
     print('Where did they go? Please pick the spot from 1 to 9.')
     whereTheyWent = str(input())
     if ['2', '4', '5', '6', '8'] in whereTheyWent:
@@ -98,6 +86,52 @@ def newGameXsecond():
 def newGameOfirst():
     print('Put an O in the bottom left corner')
     theBoard['low-L'] = 'O'
+    theOptionsBoard['low-L'] = 'O'
+    ticTacModules.printBoard(theBoard)
+    print('Where did they go? Please pick the spot from 1 to 9.')
+    whereTheyWent = int(input())
+    if whereTheyWent == 1:
+        theBoard['top-L'] = 'X'
+        theOptionsBoard['top-L'] = 'X'
+        print('Put an O in spot 3')
+        theBoard['top-R'] = 'O'
+        theOptionsBoard['top-R'] = 'O'
+    if whereTheyWent == 2:
+        theBoard['top-M'] = 'X'
+        theOptionsBoard['top-M'] = 'X'
+        print('Put an O in spot 3')
+        theBoard['top-R'] = 'O'
+        theOptionsBoard['top-R'] = 'O'
+    if whereTheyWent == 4:
+        theBoard['mid-L'] = 'X'
+        theOptionsBoard['mid-L'] = 'X'
+        print('Put an O in spot 3')
+        theBoard['top-R'] = 'O'
+        theOptionsBoard['top-R'] = 'O'
+    if whereTheyWent == 5:
+        theBoard['mid-M'] = 'X'
+        theOptionsBoard['mid-M'] = 'X'
+        print('Put an O in spot 3')
+        theBoard['top-R'] = 'O'
+        theOptionsBoard['top-R'] = 'O'
+    if whereTheyWent == 6:
+        theBoard['mid-R'] = 'X'
+        theOptionsBoard['mid-R'] = 'X'
+        print('Put an O in spot 3')
+        theBoard['top-R'] = 'O'
+        theOptionsBoard['top-R'] = 'O'
+    if whereTheyWent == 8:
+        theBoard['bot-M'] = 'X'
+        theOptionsBoard['bot-M'] = 'X'
+        print('Put an O in spot 3')
+        theBoard['top-R'] = 'O'
+        theOptionsBoard['top-R'] = 'O'
+    if whereTheyWent == 9:
+        theBoard['bot-R'] = 'X'
+        theOptionsBoard['bot-R'] = 'X'
+        print('Put an O in spot 3')
+        theBoard['top-R'] = 'O'
+        theOptionsBoard['top-R'] = 'O'
 
 def newGameOsecond():
     print('you lose!')
@@ -107,4 +141,4 @@ nextBestMove()
 
 
 
-printOptionsBoard(theOptionsBoard)
+ticTacModules.printOptionsBoard(theOptionsBoard)
