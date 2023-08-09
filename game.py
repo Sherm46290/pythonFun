@@ -31,7 +31,7 @@ print()
 print()
 
 num_games = int(input("How many games would you like to play? "))
-ddd
+
 
 def game():
     # loop for number of games to play
